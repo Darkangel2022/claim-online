@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CLAIM — Play Free</title>
+<meta name="description" content="CLAIM — joc de cărți gratuit, single player și multiplayer online pe Windows, Android, iPhone și browser.">
+<link rel="icon" href="icon-192.png"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#071f43">
+<style>
+:root{--bg:#071f43;--panel:#0c2342;--line:#69beff;--gold:#ffd257;--text:#f6fbff;--muted:#b8d4ea}
+*{box-sizing:border-box}html{background:#051a38}html,body{margin:0;background:radial-gradient(circle at 50% 10%,#1b70d8 0,#0a3a7d 30%,#051a38 75%) fixed;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;min-height:100%}
+main{max-width:860px;margin:0 auto;padding:32px 16px 48px;text-align:center}
+.logo{width:min(520px,90%);height:auto;filter:drop-shadow(0 12px 30px #000a)}
+h1{font-size:clamp(26px,6vw,44px);letter-spacing:.06em;margin:18px 0 6px;font-weight:1000}
+h1 b{color:var(--gold)}
+.sub{color:var(--muted);font-size:17px;margin:0 0 26px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:120px;border-radius:18px;border:2px solid #9ad9ff66;text-decoration:none;color:#fff;font-weight:1000;font-size:20px;letter-spacing:.04em;box-shadow:inset 0 1px #fff2,0 10px 26px #0007;transition:transform .12s,filter .12s;padding:14px}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}.btn small{font-size:12.5px;font-weight:700;color:#e6f2ff;opacity:.9;letter-spacing:.02em}
+.btn i{font-style:normal;font-size:30px}
+.win{background:linear-gradient(#1f6fd1,#0f4a96)}.and{background:linear-gradient(#29ca68,#159b4b);border-color:#82f4ad;color:#031b10}.and small{color:#05301a}
+.ios{background:linear-gradient(#c73df4,#8b1bc4);border-color:#e7a2ff}.web{background:linear-gradient(#e0a600,#a87400);border-color:#ffe49a;color:#1d1300}.web small{color:#2a1a00}
+.btn.off{opacity:.5;pointer-events:none}
+.card{background:#061a32cc;border:1px solid #7fc9ff44;border-radius:16px;padding:16px 18px;text-align:left;margin-top:22px;line-height:1.55;color:var(--muted)}
+.card h2{color:var(--text);font-size:16px;letter-spacing:.06em;margin:0 0 8px}.card b{color:var(--text)}
+.feat{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 0 22px}.feat span{background:#ffffff14;border:1px solid #ffffff2a;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:800}
+.lang{position:absolute;top:14px;right:14px;background:#061a32;border:1.5px solid #69beff88;color:#fff;border-radius:10px;padding:8px 12px;font-weight:900;cursor:pointer}
+footer{color:#7fa3c2;font-size:12px;margin-top:26px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.btn{min-height:92px}}
+</style>
+</head>
+<body>
+<button class="lang" id="lang">EN</button>
+<main>
+  <img class="logo" src="logo.png" alt="CLAIM">
+  <h1>CLAIM — <b data-t="free">JOACĂ GRATUIT</b></h1>
+  <p class="sub" data-t="sub">Jocul de cărți CLAIM, acum și online: joacă cu prietenii de pe orice dispozitiv, sau singur contra calculatorului — gratuit, fără cont, fără plăți obligatorii.</p>
+  <div class="feat"><span>🃏 Single player offline</span><span>🌐 Multiplayer 2–6</span><span data-t="f3">🔒 Camere private cu cod</span><span data-t="f4">🌍 Camere publice</span><span data-t="f5">🤖 Boți</span><span>🇷🇴 / 🇬🇧</span></div>
+  <div class="grid">
+    <a class="btn win" href="downloads/CLAIM_Windows.exe" download><i>🪟</i>DOWNLOAD WINDOWS<small data-t="winS">Windows 10/11 • un singur fișier, fără instalare</small></a>
+    <a class="btn and" id="apk" href="downloads/CLAIM_Android.apk" download><i>🤖</i>DOWNLOAD ANDROID<small data-t="andS">Fișier APK • Android 7+</small></a>
+    <a class="btn ios" href="./#ios"><i>🍎</i>PLAY ON iPHONE<small data-t="iosS">Safari → Partajare → „Adaugă pe ecranul principal”</small></a>
+    <a class="btn web" href="./"><i>▶</i>PLAY IN BROWSER<small data-t="webS">Orice calculator, tabletă sau telefon</small></a>
+  </div>
+  <div class="card"><h2 data-t="howT">CUM JUCĂM ÎMPREUNĂ</h2><span data-t="how">Unul dintre voi alege <b>MULTIPLAYER ONLINE → CREEAZĂ CAMERĂ</b> și primește un cod, de exemplu <b>CLAIM-4821</b>. Ceilalți aleg <b>INTRĂ CU COD</b> și îl introduc — de pe Windows, Android, iPhone sau browser, toți la aceeași masă.</span></div>
+  <div class="card"><h2>iPHONE / iPAD</h2><span data-t="ios">Deschide pagina în <b>Safari</b>, apasă <b>Partajare</b> (pătratul cu săgeată) → <b>Adaugă pe ecranul principal</b>. CLAIM apare ca o aplicație, pe tot ecranul, și merge single player și fără internet. (Este o aplicație web, nu una din App Store.)</span></div>
+  <div class="card"><h2>ANDROID</h2><span data-t="and">Descarcă APK-ul și deschide-l. Dacă telefonul întreabă, permite „instalarea din această sursă”. Alternativ, deschide jocul în Chrome → meniul ⋮ → <b>Instalează aplicația</b>.</span></div>
+  <footer>CLAIM • v1.0 • <span data-t="foot">gratuit pentru toți</span></footer>
+</main>
+<script>
+const EN={free:'PLAY FREE',sub:'The CLAIM card game, now online: play with friends on any device, or alone against the computer — free, no account, no required payments.',f3:'🔒 Private rooms with code',f4:'🌍 Public rooms',f5:'🤖 Bots',winS:'Windows 10/11 • single file, no install',andS:'APK file • Android 7+',iosS:'Safari → Share → “Add to Home Screen”',webS:'Any computer, tablet or phone',howT:'HOW TO PLAY TOGETHER',how:'One of you picks <b>ONLINE MULTIPLAYER → CREATE ROOM</b> and gets a code like <b>CLAIM-4821</b>. The others pick <b>JOIN ROOM</b> and enter it — from Windows, Android, iPhone or a browser, all at the same table.',ios:'Open this page in <b>Safari</b>, tap <b>Share</b> (square with arrow) → <b>Add to Home Screen</b>. CLAIM appears as an app, full screen, and single player works offline. (It is a web app, not an App Store app.)',and:'Download the APK and open it. If asked, allow “install from this source”. Or open the game in Chrome → menu ⋮ → <b>Install app</b>.',foot:'free for everyone'};
+const RO={};document.querySelectorAll('[data-t]').forEach(e=>RO[e.dataset.t]=e.innerHTML);
+let lang=(()=>{try{return localStorage.getItem('claim300_lang')}catch(e){return null}})();lang=lang?JSON.parse(lang):(/^ro/i.test(navigator.language)?'ro':'en');
+function apply(){document.querySelectorAll('[data-t]').forEach(e=>e.innerHTML=(lang==='en'?EN:RO)[e.dataset.t]);document.documentElement.lang=lang;document.getElementById('lang').textContent=lang==='en'?'RO':'EN';try{localStorage.setItem('claim300_lang',JSON.stringify(lang))}catch(e){}}
+document.getElementById('lang').onclick=()=>{lang=lang==='en'?'ro':'en';apply()};apply();
+fetch('downloads/CLAIM_Android.apk',{method:'HEAD'}).then(r=>{if(!r.ok)throw 0}).catch(()=>{const a=document.getElementById('apk');a.classList.add('off');a.querySelector('small').textContent=lang==='en'?'Coming soon':'În curând'});
+</script>
+</body>
+</html>
