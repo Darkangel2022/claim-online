@@ -1,0 +1,35 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'ro.claim.game'
+    compileSdk 34
+    defaultConfig {
+        applicationId 'ro.claim.game'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.1.0'
+        // ID-urile AdMob: variabile GitHub (ADMOB_APP_ID, ADMOB_INTERSTITIAL_ID, ADMOB_REWARDED_ID).
+        // Implicit: ID-urile OFICIALE DE TEST Google (nu aduc bani, dar arată reclame de probă).
+        def env = { k, d -> def v = System.getenv(k); return v ? v : d }
+        manifestPlaceholders = [admobAppId: env('ADMOB_APP_ID', 'ca-app-pub-3940256099942544~3347511713')]
+        buildConfigField 'String', 'ADMOB_INTERSTITIAL', '"' + env('ADMOB_INTERSTITIAL_ID', 'ca-app-pub-3940256099942544/1033173712') + '"'
+        buildConfigField 'String', 'ADMOB_REWARDED', '"' + env('ADMOB_REWARDED_ID', 'ca-app-pub-3940256099942544/5224354917') + '"'
+    }
+    buildFeatures { buildConfig true }
+    signingConfigs {
+        release {
+            // Pentru Google Play: setează secretele în GitHub (vezi README). Fără ele, AAB-ul rămâne nesemnat.
+            def ks = System.getenv('CLAIM_KEYSTORE')
+            if (ks) { storeFile file(ks); storePassword System.getenv('CLAIM_KEYSTORE_PASSWORD'); keyAlias System.getenv('CLAIM_KEY_ALIAS'); keyPassword System.getenv('CLAIM_KEY_PASSWORD') }
+        }
+    }
+    buildTypes {
+        release { minifyEnabled false; if (System.getenv('CLAIM_KEYSTORE')) signingConfig signingConfigs.release }
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+}
+
+dependencies {
+    implementation 'com.google.android.gms:play-services-ads:23.3.0'
+    implementation 'com.google.android.ump:user-messaging-platform:3.0.0'
+}

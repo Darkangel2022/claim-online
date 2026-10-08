@@ -1,0 +1,1 @@
+window.CLAIM_SERVER="";
