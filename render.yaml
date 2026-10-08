@@ -1,0 +1,17 @@
+# Render.com — găzduire gratuită (Blueprint). Vezi GHID_PUBLICARE.md.
+services:
+  - type: web
+    name: claim-online
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install --omit=dev
+    startCommand: node src/server.js
+    healthCheckPath: /healthz
+    envVars:
+      - key: CLAIM_PUBLIC
+        value: ../public
+      - key: CLAIM_RECONNECT_MS
+        value: "60000"
+      - key: CLAIM_TURN_MS
+        value: "45000"
