@@ -1,0 +1,41 @@
+# Construiește automat CLAIM_Android.apk (instalabil) și CLAIM_Android.aab (Google Play) — gratuit, pe GitHub.
+name: Build Android
+on:
+  workflow_dispatch:
+  push:
+    paths: ['public/**', 'android/**', '.github/workflows/android.yml']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HAS_KEYSTORE: ${{ secrets.CLAIM_KEYSTORE_BASE64 != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.9' }
+      - name: Copiază jocul web în aplicație
+        env: { CLAIM_SERVER: '${{ vars.CLAIM_SERVER }}' }
+        run: sh android/sync-web.sh
+      - name: Keystore (opțional, pentru Google Play)
+        if: env.HAS_KEYSTORE == 'true'
+        run: echo "${{ secrets.CLAIM_KEYSTORE_BASE64 }}" | base64 -d > $RUNNER_TEMP/claim.jks && echo "CLAIM_KEYSTORE=$RUNNER_TEMP/claim.jks" >> $GITHUB_ENV
+      - name: Build APK + AAB
+        working-directory: android
+        env:
+          ADMOB_APP_ID: ${{ vars.ADMOB_APP_ID }}
+          ADMOB_INTERSTITIAL_ID: ${{ vars.ADMOB_INTERSTITIAL_ID }}
+          ADMOB_REWARDED_ID: ${{ vars.ADMOB_REWARDED_ID }}
+          CLAIM_KEYSTORE_PASSWORD: ${{ secrets.CLAIM_KEYSTORE_PASSWORD }}
+          CLAIM_KEY_ALIAS: ${{ secrets.CLAIM_KEY_ALIAS }}
+          CLAIM_KEY_PASSWORD: ${{ secrets.CLAIM_KEY_PASSWORD }}
+        run: gradle --no-daemon assembleDebug bundleRelease
+      - name: Redenumește
+        run: |
+          mkdir -p out
+          cp android/app/build/outputs/apk/debug/app-debug.apk out/CLAIM_Android.apk
+          cp android/app/build/outputs/bundle/release/app-release.aab out/CLAIM_Android.aab
+      - uses: actions/upload-artifact@v4
+        with: { name: CLAIM_Android, path: out/ }
