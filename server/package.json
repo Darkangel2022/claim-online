@@ -1,0 +1,1 @@
+{"name":"claim-online-server","version":"1.0.0","type":"module","private":true,"scripts":{"start":"node src/server.js","test":"node --test test/"},"dependencies":{"ws":"^8.18.0"},"engines":{"node":">=18"}}
